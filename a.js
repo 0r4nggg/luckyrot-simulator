@@ -1,4 +1,5 @@
 let currentMode = "mythic";
+let currentLot = "normal";
 
 function setMode(mode, e) {
   currentMode = mode;
@@ -20,8 +21,6 @@ function setMode(mode, e) {
   document.querySelectorAll(".mode-card").forEach(el => el.classList.remove("active"));
   e.currentTarget.classList.add("active");
 }
-
-let currentLot = "normal";
 
 function setLot(lot, e) {
   currentLot = lot;
@@ -110,7 +109,12 @@ const ratesData = {
 };
 
 function draw() {
-  const rates = ratesData[currentLot][currentMode];
+  const rates = ratesData[currentLot]?.[currentMode];
+
+  if (!rates) {
+    console.error("rates error:", currentLot, currentMode);
+    return "ERROR";
+  }
 
   const total = rates.reduce((s, r) => s + r.weight, 0);
   const rand = Math.random() * total;
