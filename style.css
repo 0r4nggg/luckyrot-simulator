@@ -1,8 +1,8 @@
 body {
-  background: radial-gradient(circle at top, #111, #000);
+  background: radial-gradient(circle at top, #0a0a0a, #000);
   color: white;
-  text-align: center;
   font-family: 'Segoe UI', sans-serif;
+  text-align: center;
 }
 
 /* Move Rainbow Letter */
@@ -24,48 +24,47 @@ body {
 .mode-container {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin: 20px;
+  gap: 30px;
+  margin: 30px;
 }
 
 .mode-card {
-  padding: 12px 20px;
-  border-radius: 10px;
-  background: #222;
+  width: 260px;
+  padding: 20px;
+  border-radius: 15px;
+  background: #111;
+  border: 2px solid #222;
   cursor: pointer;
   transition: 0.3s;
-  border: 2px solid transparent;
+  text-align: left;
+}
+
+.mode-card h2 {
+  margin: 0;
+  font-size: 20px;
 }
 
 .mode-card:hover {
-  transform: scale(1.1);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
   border-color: cyan;
 }
 
 .mode-card.active {
-  background: linear-gradient(45deg, #00f, #0ff);
+  border: 2px solid white;
+  box-shadow: 0 0 30px rgba(255,255,255,0.4);
 }
 
-.banner {
-  width: 300px;
-  margin: 20px;
-  border-radius: 10px;
+.mode-card.mythic:hover {
+  box-shadow: 0 0 25px rgba(0,150,255,0.5);
 }
 
-.draw-btn {
-  padding: 12px 30px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(45deg, #ff00cc, #3333ff);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+.mode-card.god:hover {
+  box-shadow: 0 0 25px rgba(255,215,0,0.6);
 }
 
-.draw-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #0ff;
+.mode-card.secret:hover {
+  box-shadow: 0 0 25px rgba(255,0,150,0.6);
 }
 
 /* Pop-Up */
