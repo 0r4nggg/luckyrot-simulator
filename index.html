@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ラッキーロットシミュレーター</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 class="rainbow">ラッキーロットシミュレーター</h1>
+
+<select id="mode" onchange="changeMode()">
+  <option value="mythic">Mythic</option>
+  <option value="god">Brainrot God</option>
+  <option value="secret">Secret</option>
+</select>
+
+<br><br>
+
+<img id="banner" src="LuckyRot_Mythic.png" width="300">
+
+<br><br>
+
+<button onclick="singleDraw()">引く</button>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <h2>獲得！</h2>
+    <img id="popup-img" src="">
+    <p id="popup-name"></p>
+    <button onclick="closePopup()">閉じる</button>
+  </div>
+</div>
+
+<script src="a.js"></script>
+</body>
+</html>
