@@ -11,9 +11,19 @@
 
 <!-- Mode Select -->
 <div class="mode-container">
-  <div class="mode-card active" onclick="setMode('mythic')">ミシック</div>
-  <div class="mode-card" onclick="setMode('god')">ゴッド</div>
-  <div class="mode-card" onclick="setMode('secret')">シクレ</div>
+
+  <div class="mode-card mythic active" onclick="setMode('mythic', event)">
+    <h2>ミシック</h2>
+  </div>
+
+  <div class="mode-card god" onclick="setMode('god', event)">
+    <h2>ブレインロットゴッド</h2>
+  </div>
+
+  <div class="mode-card secret" onclick="setMode('secret', event)">
+    <h2>シークレット</h2>
+  </div>
+
 </div>
 
 <img id="banner" src="LuckyRot_Mythic.png" class="banner">
