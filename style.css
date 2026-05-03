@@ -155,3 +155,27 @@ body {
 .close-btn:hover {
   background: #666;
 }
+
+.lot-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px;
+}
+
+.lot-card {
+  padding: 8px 16px;
+  background: #111;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #333;
+  transition: 0.2s;
+}
+
+.lot-card:hover {
+  border-color: cyan;
+}
+
+.lot-card.active {
+  border-color: white;
+}
