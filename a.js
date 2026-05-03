@@ -1,6 +1,3 @@
-let currentMode = "mythic";
-let currentLot = "normal";
-
 function setMode(mode, e) {
   currentMode = mode;
 
@@ -20,10 +17,15 @@ function setMode(mode, e) {
 
   document.querySelectorAll(".mode-card").forEach(el => el.classList.remove("active"));
   e.currentTarget.classList.add("active");
-}
+} 
 
 function setLot(lot, e) {
   currentLot = lot;
+
+  document.querySelectorAll(".lot-card").forEach(el => el.classList.remove("active"));
+  e.currentTarget.classList.add("active");
+}
+
 
 const ratesData = {
   normal: {
