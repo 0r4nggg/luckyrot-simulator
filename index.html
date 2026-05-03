@@ -9,26 +9,24 @@
 
 <h1 class="rainbow">ラッキーロットシミュレーター</h1>
 
-<select id="mode" onchange="changeMode()">
-  <option value="mythic">Mythic</option>
-  <option value="god">Brainrot God</option>
-  <option value="secret">Secret</option>
-</select>
+<!-- Mode Select -->
+<div class="mode-container">
+  <div class="mode-card active" onclick="setMode('mythic')">ミシック</div>
+  <div class="mode-card" onclick="setMode('god')">ゴッド</div>
+  <div class="mode-card" onclick="setMode('secret')">シクレ</div>
+</div>
 
-<br><br>
+<img id="banner" src="LuckyRot_Mythic.png" class="banner">
 
-<img id="banner" src="LuckyRot_Mythic.png" width="300">
+<button class="draw-btn" onclick="singleDraw()">引く</button>
 
-<br><br>
-
-<button onclick="singleDraw()">引く</button>
-
+<!-- Pop-Up -->
 <div id="popup" class="popup">
   <div class="popup-content">
     <h2>獲得！</h2>
-    <img id="popup-img" src="">
+    <img id="popup-img">
     <p id="popup-name"></p>
-    <button onclick="closePopup()">閉じる</button>
+    <button class="close-btn" onclick="closePopup()">閉じる</button>
   </div>
 </div>
 
