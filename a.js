@@ -12,6 +12,15 @@ function setMode(mode, e) {
   e.currentTarget.classList.add("active");
 }
 
+let currentLot = "normal";
+
+function setLot(lot, e) {
+  currentLot = lot;
+
+  document.querySelectorAll(".lot-card").forEach(el => el.classList.remove("active"));
+  e.currentTarget.classList.add("active");
+}
+
 const ratesData = {
   mythic: [
     { name: "Gorillo Watermellondrillo", weight: 15 },
