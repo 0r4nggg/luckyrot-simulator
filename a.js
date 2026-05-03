@@ -1,3 +1,6 @@
+let currentMode = "mythic";
+let currentLot = "normal";
+
 function setMode(mode, e) {
   currentMode = mode;
 
