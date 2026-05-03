@@ -1,6 +1,6 @@
 let currentMode = "mythic";
 
-function setMode(mode) {
+function setMode(mode, e) {
   currentMode = mode;
 
   const banner = document.getElementById("banner");
@@ -9,7 +9,7 @@ function setMode(mode) {
   if (mode === "secret") banner.src = "LuckyRot_Secret.png";
 
   document.querySelectorAll(".mode-card").forEach(el => el.classList.remove("active"));
-  event.target.classList.add("active");
+  e.currentTarget.classList.add("active");
 }
 
 const ratesData = {
