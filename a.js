@@ -1,8 +1,3 @@
-let currentMode = "mythic";
-let currentLot = "normal";
-let currentType = "normal"; 
-// normal / grande / special
-
 function setMode(mode, e) {
   currentMode = mode;
 
@@ -20,17 +15,26 @@ function setMode(mode, e) {
     if (mode === "secret") banner.src = "Grande_Secret.png";
   }
 
-  if (currentType === "special") {
-    if (currentLot === "pumpkin") banner.src = "Pumpkin_Rot.jpg";
-    if (currentLot === "love") banner.src = "Love_Rot.jpg";
-    if (currentLot === "easter") banner.src = "Easter_Rot.jpg";
-  }
-
   document.querySelectorAll(".mode-card").forEach(el => el.classList.remove("active"));
   e.currentTarget.classList.add("active");
 } 
 
+function setSpecial(lot, e) {
+  currentType = "special";
+  currentLot = lot;
+
+  document.querySelectorAll(".lot-card").forEach(el => el.classList.remove("active"));
+  e.currentTarget.classList.add("active");
+
+  const banner = document.getElementById("banner");
+
+  if (lot === "pumpkin") banner.src = "Pumpkin_Rot.jpg";
+  if (lot === "love") banner.src = "Love_Rot.jpg";
+  if (lot === "easter") banner.src = "Easter_Rot.jpg";
+}
+
 function setLot(lot, e) {
+  currentType = "normal"; 
   currentLot = lot;
 
   document.querySelectorAll(".lot-card").forEach(el => el.classList.remove("active"));
