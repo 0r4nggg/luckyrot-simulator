@@ -179,3 +179,12 @@ body {
 .lot-card.active {
   border-color: white;
 }
+
+.lot-card.special {
+  border: 1px solid #333;
+}
+
+.lot-card.special:hover {
+  border-color: orange;
+  box-shadow: 0 0 15px orange;
+}
