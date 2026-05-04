@@ -33,9 +33,9 @@ function setSpecial(lot, e) {
 
   const banner = document.getElementById("banner");
 
-  if (lot === "pumpkin") banner.src = "Pumpkin_Rot.jpg";
-  if (lot === "love") banner.src = "Love_Rot.jpg";
-  if (lot === "easter") banner.src = "Easter_Rot.jpg";
+  if (lot === "pumpkin") banner.src = "Pumpkin_Rot.png";
+  if (lot === "love") banner.src = "Love_Rot.png";
+  if (lot === "easter") banner.src = "Easter_Rot.png";
 
   document.getElementById("mode-container").style.display = "none";
 }
