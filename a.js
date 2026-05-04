@@ -167,7 +167,10 @@ function draw() {
     rates = ratesData[currentLot]?.[currentMode];
   }
 
-  if (!rates) return "ERROR";
+  if (!rates) {
+    console.error("rates error:", currentType, currentLot, currentMode);
+    return "ERROR";
+  }
 
   const total = rates.reduce((s, r) => s + r.weight, 0);
   const rand = Math.random() * total;
