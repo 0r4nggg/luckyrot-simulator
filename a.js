@@ -1,5 +1,7 @@
 let currentMode = "mythic";
 let currentLot = "normal";
+let currentType = "normal"; 
+// normal / grande / special
 
 function setMode(mode, e) {
   currentMode = mode;
@@ -16,6 +18,12 @@ function setMode(mode, e) {
     if (mode === "mythic") banner.src = "Grande_Mythic.png";
     if (mode === "god") banner.src = "Grande_God.png";
     if (mode === "secret") banner.src = "Grande_Secret.png";
+  }
+
+  if (currentType === "special") {
+    if (currentLot === "pumpkin") banner.src = "Pumpkin_Rot.jpg";
+    if (currentLot === "love") banner.src = "Love_Rot.jpg";
+    if (currentLot === "easter") banner.src = "Easter_Rot.jpg";
   }
 
   document.querySelectorAll(".mode-card").forEach(el => el.classList.remove("active"));
@@ -110,16 +118,47 @@ const ratesData = {
       { name: "La Crazy Combinacion", weight: 0.8 },
       { name: "Bearini Plammini Guardini", weight: 0.2 }
     ]
+  },
+
+  special: {
+    pumpkin: [
+      { name: "Nooo My Hotspot", weight: 50 },
+      { name: "Garamaramadungdung", weight: 25 },
+      { name: "La Grande Combinacion", weight: 12 },
+      { name: "67", weight: 7 },
+      { name: "Ketupat Kepat Prekupat", weight: 5 },
+      { name: "Spaghetti Tualetti", weight: 1 }
+    ],
+  
+    love: [
+      { name: "Fourteen", weight: 54 },
+      { name: "Rosalero", weight: 25 },
+      { name: "Lovey Lovey Bear", weight: 12 },
+      { name: "Lovelypat", weight: 6 },
+      { name: "La Royals", weight: 2.5 },
+      { name: "Chocone Dragone", weight: 0.5 }
+    ],
+  
+    easter: [
+      { name: "Bun Din Din Dun", weight: 49 },
+      { name: "Noo My Eggs", weight: 33 },
+      { name: "Carrot Carrot Sahur", weight: 15 },
+      { name: "Baskuru and Egguru", weight: 2.5 },
+      { name: "La Easter Eggolah", weight: 0.5 }
+   ]
   }
 };
 
 function draw() {
-  const rates = ratesData[currentLot]?.[currentMode];
+  let rates;
 
-  if (!rates) {
-    console.error("rates error:", currentLot, currentMode);
-    return "ERROR";
+  if (currentType === "special") {
+    rates = ratesData.special[currentLot];
+  } else {
+    rates = ratesData[currentLot]?.[currentMode];
   }
+
+  if (!rates) return "ERROR";
 
   const total = rates.reduce((s, r) => s + r.weight, 0);
   const rand = Math.random() * total;
@@ -129,6 +168,33 @@ function draw() {
     sum += item.weight;
     if (rand < sum) return item.name;
   }
+}
+
+function getMutation() {
+  if (currentType !== "special") return null;
+
+  if (currentLot === "pumpkin") {
+    if (Math.random() < 0.10) return { text: "Halloween", color: "orange" };
+  }
+
+  if (currentLot === "love") {
+    if (Math.random() < 0.10) return { text: "Love", color: "pink" };
+  }
+
+  if (currentLot === "easter") {
+    if (Math.random() < 0.15) {
+      const variants = [
+        { text: "Dreamy", color: "#d8a0ff" },
+        { text: "Chocolate", color: "#8B4513" },
+        { text: "Love", color: "pink" },
+        { text: "Void", color: "#4b0082" },
+        { text: "Heaven", color: "#fff4a3" }
+      ];
+      return variants[Math.floor(Math.random() * variants.length)];
+    }
+  }
+
+  return null;
 }
 
 function singleDraw() {
@@ -141,7 +207,19 @@ function showPopup(name) {
   const text = document.getElementById("popup-name");
 
   img.src = "images/" + name.replace(/ /g, "_") + ".webp";
-  text.textContent = name;
+
+  const mutation = getMutation();
+
+  if (mutation) {
+    text.innerHTML = `
+      <span style="color:${mutation.color}; font-weight:bold;">
+        ${mutation.text}
+      </span><br>
+      ${name}
+    `;
+  } else {
+    text.textContent = name;
+  }
 
   document.getElementById("popup").style.display = "flex";
 }
