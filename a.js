@@ -33,17 +33,21 @@ function setSpecial(lot, e) {
 
   const banner = document.getElementById("banner");
 
-  if (lot === "pumpkin") banner.src = "Pumpkin_Rot.png";
-  if (lot === "love") banner.src = "Love_Rot.png";
-  if (lot === "easter") banner.src = "Easter_Rot.png";
+  if (lot === "pumpkin") banner.src = "Pumpkin_Rot.jpg";
+  if (lot === "love") banner.src = "Love_Rot.jpg";
+  if (lot === "easter") banner.src = "Easter_Rot.jpg";
+
+  document.getElementById("mode-container").style.display = "none";
 }
 
 function setLot(lot, e) {
-  currentType = "normal"; 
+  currentType = "normal";
   currentLot = lot;
 
   document.querySelectorAll(".lot-card").forEach(el => el.classList.remove("active"));
   e.currentTarget.classList.add("active");
+
+  document.getElementById("mode-container").style.display = "flex";
 }
 
 
